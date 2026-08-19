@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Royal Burgundy Background Gradient -->
+    <radialGradient id="bg-burgundy" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#96283d" />
+      <stop offset="45%" stop-color="#721727" />
+      <stop offset="85%" stop-color="#4a0d18" />
+      <stop offset="100%" stop-color="#2d050c" />
+    </radialGradient>
+
+    <!-- Metallic Gold Primary Gradient -->
+    <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0c2" />
+      <stop offset="25%" stop-color="#dfb76c" />
+      <stop offset="50%" stop-color="#aa7d28" />
+      <stop offset="75%" stop-color="#e8c785" />
+      <stop offset="100%" stop-color="#fdf4d8" />
+    </linearGradient>
+
+    <!-- Bright Gold Highlight Gradient -->
+    <linearGradient id="gold-bright" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c59b4c" />
+      <stop offset="50%" stop-color="#ffd984" />
+      <stop offset="100%" stop-color="#ffeec4" />
+    </linearGradient>
+
+    <!-- Soft Gold Radial Glow -->
+    <radialGradient id="gold-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Premium Emboss & Drop Shadow Filter -->
+    <filter id="royal-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+    <filter id="gold-emboss" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- 1. Background Circle with Royal Burgundy Velvet -->
+  <circle cx="256" cy="256" r="248" fill="url(#bg-burgundy)" />
+
+  <!-- 2. Ambient Gold Core Glow -->
+  <circle cx="256" cy="256" r="220" fill="url(#gold-glow)" />
+
+  <!-- 3. Outer Decorative Concentric Gold Borders -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#gold-metallic)" stroke-width="4" />
+  <circle cx="256" cy="256" r="230" fill="none" stroke="url(#gold-metallic)" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.8" />
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#gold-metallic)" stroke-width="3" />
+
+  <!-- 4. Auspicious Bengali Alpona Dot Accents along rim -->
+  <g fill="url(#gold-bright)" opacity="0.9">
+    <circle cx="256" cy="31" r="5" />
+    <circle cx="415" cy="97" r="4" />
+    <circle cx="481" cy="256" r="5" />
+    <circle cx="415" cy="415" r="4" />
+    <circle cx="256" cy="481" r="5" />
+    <circle cx="97" cy="415" r="4" />
+    <circle cx="31" cy="256" r="5" />
+    <circle cx="97" cy="97" r="4" />
+  </g>
+
+  <!-- 5. Top Auspicious Royal Bengali Crown & Lotus Crest -->
+  <g filter="url(#gold-emboss)">
+    <!-- Top Central Star / ✦ -->
+    <path d="M 256 70 L 260 84 L 274 88 L 260 92 L 256 106 L 252 92 L 238 88 L 252 84 Z" fill="url(#gold-bright)" />
+    <!-- Mini Auspicious Om Motif / Lotus Petals -->
+    <path d="M 236 102 C 242 96, 250 94, 256 94 C 262 94, 270 96, 276 102 C 268 106, 262 108, 256 108 C 250 108, 244 106, 236 102 Z" fill="url(#gold-metallic)" />
+    <circle cx="228" cy="94" r="2.5" fill="url(#gold-bright)" />
+    <circle cx="284" cy="94" r="2.5" fill="url(#gold-bright)" />
+  </g>
+
+  <!-- 6. Central Royal Monogram: "A & S" -->
+  <g filter="url(#royal-shadow)">
+    <!-- Letter 'A' (Graceful Classical Serif) -->
+    <path d="
+      M 122 334 
+      L 142 334 
+      L 182 222 
+      L 220 334 
+      L 242 334 
+      L 242 324 
+      L 230 324 
+      L 194 214 
+      C 190 202, 178 178, 172 162 
+      L 168 162 
+      C 162 178, 150 202, 146 214 
+      L 110 324 
+      L 98 324 
+      Z 
+      M 152 284 
+      L 212 284 
+      L 207 268 
+      L 157 268 
+      Z" 
+      fill="url(#gold-metallic)" />
+
+    <!-- Center Intertwined Calligraphic Ampersand '&' -->
+    <path d="
+      M 264 266 
+      C 274 256, 280 244, 280 232 
+      C 280 216, 269 204, 253 204 
+      C 238 204, 227 215, 227 230 
+      C 227 244, 236 257, 249 270 
+      L 222 308 
+      C 214 319, 209 328, 209 336 
+      C 209 347, 219 356, 234 356 
+      C 252 356, 273 342, 288 320 
+      L 297 327 
+      C 280 352, 254 368, 231 368 
+      C 207 368, 193 353, 193 333 
+      C 193 318, 201 305, 213 290 
+      L 237 257 
+      C 229 246, 223 236, 223 226 
+      C 223 207, 238 192, 257 192 
+      C 275 192, 292 208, 292 229 
+      C 292 245, 283 260, 270 272 
+      L 302 318 
+      L 294 324 
+      Z 
+      M 248 274 
+      L 262 256 
+      C 268 247, 272 238, 272 230 
+      C 272 220, 265 212, 255 212 
+      C 245 212, 238 219, 238 229 
+      C 238 238, 242 248, 248 274 
+      Z" 
+      fill="url(#gold-bright)" />
+
+    <!-- Letter 'S' (Majestic Royal Flourish) -->
+    <path d="
+      M 390 198 
+      C 382 186, 368 174, 345 174 
+      C 321 174, 303 189, 303 209 
+      C 303 226, 316 238, 338 248 
+      L 354 256 
+      C 380 268, 396 286, 396 312 
+      C 396 342, 369 366, 335 366 
+      C 309 366, 289 353, 277 338 
+      L 288 328 
+      C 298 342, 315 352, 336 352 
+      C 360 352, 379 336, 379 313 
+      C 379 292, 363 279, 340 268 
+      L 324 260 
+      C 303 250, 288 234, 288 210 
+      C 288 184, 312 162, 344 162 
+      C 367 162, 386 173, 398 188 
+      Z" 
+      fill="url(#gold-metallic)" />
+  </g>
+
+  <!-- 7. Bottom Auspicious Royal Filigree & Wedding Date Banner -->
+  <g filter="url(#gold-emboss)">
+    <!-- Ornate Golden Winged Flourish -->
+    <path d="
+      M 160 400 
+      C 190 392, 222 396, 244 410 
+      C 248 412, 252 414, 256 414 
+      C 260 414, 264 412, 268 410 
+      C 290 396, 322 392, 352 400 
+      C 328 408, 300 408, 276 418 
+      C 264 424, 256 428, 256 428 
+      C 256 428, 248 424, 236 418 
+      C 212 408, 184 408, 160 400 
+      Z" 
+      fill="url(#gold-metallic)" />
+
+    <!-- Center Auspicious Diamond Motif -->
+    <polygon points="256,432 261,438 256,444 251,438" fill="url(#gold-bright)" />
+    <circle cx="210" cy="406" r="2.5" fill="url(#gold-bright)" />
+    <circle cx="302" cy="406" r="2.5" fill="url(#gold-bright)" />
+  </g>
+</svg>
