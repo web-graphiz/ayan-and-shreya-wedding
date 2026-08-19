@@ -1,0 +1,1133 @@
+/**
+ * ============================================================================
+ * LUXURY WEDDING STYLESHEET - AYAN & SHREYA
+ * ============================================================================
+ * Design Style: Royal Bengali Heritage & Zamindari Aesthetic
+ * Color Palette: Royal Burgundy, Champagne Gold, Ivory & Porcelain Cream
+ * Typography: Cinzel, Cormorant Garamond, Great Vibes (Script), Montserrat
+ * ============================================================================
+ */
+
+/* ============================================================================
+   TABLE OF CONTENTS
+   ============================================================================
+   1. Google Fonts Import & Typography Classes
+   2. Design Tokens & CSS Custom Properties (:root)
+   3. Global Reset, HTML & Body Defaults
+   4. Typography & Utility Classes (.gold-text, .burgundy-text)
+   5. Interactive 3D Envelope Splash Screen
+      5.1 Backdrop & Glowing Lighting
+      5.2 3D Envelope Container & Box Geometry
+      5.3 Envelope Backing & Interior Wallpaper
+      5.4 Invitation Card Inside (Gold Border, Fonts, Actions)
+      5.5 Front Pocket & Geometric Gold Seams
+      5.6 Top Triangular Flap & 3D Unfold Animation
+      5.7 Wax Seal Monogram & Pulsing Radiance
+      5.8 3D Perspective Shadow & Interaction Prompts
+      5.9 Opened State Animations & Keyframes
+   6. Floating Petal Canvas & Audio Controls
+   7. Navigation Bar, Glassmorphism & Mobile Drawer
+   8. Hero Section & Live Countdown Component
+   9. Buttons & Interactive Controls (.btn-burgundy, .btn-outline-gold)
+   10. Storytelling Chapter Timeline Section
+   11. Sacred Rituals & Schedule Cards
+   12. Venue Showcase & Travel Guide Cards
+   13. Photo Gallery & Lightbox Viewer
+   14. Wishes Wall & Guestbook Cards
+   15. RSVP Form & Confirmation Modal
+   16. Scroll Reveal Entrance Animations
+   17. Custom Scrollbars & Webkit Enhancements
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   1. Google Fonts Import & Typography Classes
+   ---------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Roman / Classical Serif heading font class */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Calligraphic Cursive Accent font class */
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+/* ----------------------------------------------------------------------------
+   2. Design Tokens & CSS Custom Properties (:root)
+   ---------------------------------------------------------------------------- */
+:root {
+  /* Royal Burgundy Tonal Palette */
+  --burgundy: #7a1c2e;         /* Primary brand color */
+  --burgundy-dark: #54111d;    /* Deep nightshade burgundy for dark sections & active states */
+  --burgundy-light: #9e2a40;   /* Vibrant crimson highlight */
+  
+  /* Metallic & Champagne Gold Tonal Palette */
+  --gold-champagne: #c5a059;   /* Classic metallic gold for borders, icons & accents */
+  --gold-accent: #d4af37;      /* Bright gold shimmer */
+  --gold-light: #e8d8b5;       /* Warm cream gold for subtitles and badges */
+  --gold-muted: rgba(197, 160, 89, 0.25); /* Subtle gold border tint */
+  
+  /* Heritage Background Neutrals */
+  --bg-porcelain: #faf9f6;     /* Main page warm porcelain background */
+  --bg-cream-soft: #f5f2eb;    /* Secondary alternating section background */
+  --bg-white: #ffffff;         /* Pure card white */
+  
+  /* Text & Contrast Neutral Colors */
+  --text-dark: #1e1e1e;        /* High-contrast readable charcoal for headings */
+  --text-muted: #666666;       /* Medium grey for body copy */
+  --text-light: #888888;       /* Subtle muted label text */
+  
+  /* Elevation & Shadow Tokens */
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 20px 40px rgba(122, 28, 46, 0.08);
+}
+
+/* ----------------------------------------------------------------------------
+   3. Global Reset, HTML & Body Defaults
+   ---------------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-porcelain);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  width: 100%;
+}
+
+/* Typography Defaults for Headings */
+h1, h2, h3, h4, .font-serif {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ----------------------------------------------------------------------------
+   4. Typography & Utility Classes
+   ---------------------------------------------------------------------------- */
+/* Metallic shimmering gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #c5a059 0%, #e8d8b5 50%, #b38938 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Primary burgundy text */
+.burgundy-text {
+  color: var(--burgundy);
+}
+
+/* Form Inputs Mobile Optimization (Prevents unwanted iOS Safari auto-zoom on input focus) */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* ----------------------------------------------------------------------------
+   5. Interactive 3D Envelope Splash Screen
+   ---------------------------------------------------------------------------- */
+
+/* 5.1 Fullscreen Splash Backdrop */
+#envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, #350810 0%, #170206 70%, #0c0003 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  padding: 1rem;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+/* Dismissed Splash State */
+#envelope-screen.opened {
+  opacity: 0;
+  transform: scale(1.06);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Ambient Radial Background Glow */
+.splash-glow {
+  position: absolute;
+  width: min(580px, 90vw);
+  height: min(580px, 90vw);
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, rgba(122, 28, 46, 0.22) 50%, transparent 72%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: splash-pulse 4s infinite ease-in-out;
+}
+
+@keyframes splash-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.splash-header {
+  position: relative;
+  z-index: 10;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  margin-bottom: 1rem;
+}
+
+/* 5.2 3D Envelope Container with Perspective */
+.envelope-container {
+  position: relative;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  height: 250px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+  margin-top: 10px;
+  z-index: 50;
+  touch-action: manipulation;
+}
+
+/* Responsive envelope scaling for mobile devices */
+@media (max-width: 480px) {
+  .envelope-container {
+    width: 330px;
+    max-width: calc(100vw - 28px);
+    height: 220px;
+  }
+}
+
+@media (max-width: 360px) {
+  .envelope-container {
+    width: 295px;
+    height: 200px;
+  }
+}
+
+.envelope-container:hover {
+  transform: translateY(-4px);
+}
+
+.envelope-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 5.3 Envelope Back Interior */
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #460c18 0%, #200408 100%);
+  border-radius: 14px;
+  border: 1.5px solid rgba(197, 160, 89, 0.4);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.env-back-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(#c5a059 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* 5.4 The Wedding Letter Card Inside */
+.env-letter {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 10px;
+  bottom: 10px;
+  background: linear-gradient(135deg, #ffffff 0%, #faf6ee 100%);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e8d8b5;
+  z-index: 3;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.8s ease;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@media (max-width: 360px) {
+  .env-letter {
+    left: 8px;
+    right: 8px;
+    top: 8px;
+    bottom: 8px;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.letter-border {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #c5a059;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.letter-border::before, .letter-border::after {
+  content: '❖';
+  position: absolute;
+  color: #c5a059;
+  font-size: 8px;
+  line-height: 1;
+}
+.letter-border::before { top: 2px; left: 2px; }
+.letter-border::after { bottom: 2px; right: 2px; }
+
+.letter-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.letter-om {
+  color: #c5a059;
+  font-size: 1.15rem;
+  margin-bottom: 1px;
+}
+
+.letter-tagline {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a1c2e;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+
+.letter-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #7a1c2e 0%, #a3223b 50%, #54111d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 480px) {
+  .letter-names { font-size: 1.8rem; }
+  .letter-om { font-size: 1rem; }
+}
+
+@media (max-width: 360px) {
+  .letter-names { font-size: 1.55rem; }
+}
+
+.letter-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c5a059;
+  font-size: 0.6rem;
+  margin-bottom: 2px;
+}
+
+.letter-divider::before, .letter-divider::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c5a059, transparent);
+}
+
+.letter-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #1e1e1e;
+  margin-bottom: 1px;
+}
+
+.letter-venue {
+  font-size: 0.62rem;
+  color: #666;
+  letter-spacing: 0.04em;
+}
+
+.letter-action {
+  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 12px;
+  background: linear-gradient(135deg, #7a1c2e 0%, #54111d 100%);
+  color: #f7f2e7;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(122, 28, 46, 0.3);
+  border: 1px solid rgba(197, 160, 89, 0.5);
+}
+
+/* 5.5 Envelope Front Pocket (Lower Triangular Fold) */
+.env-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-pocket::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #59101c 0%, #3d0a14 55%, #2c060d 100%);
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 14px 14px;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 -4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.env-pocket::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+  border-bottom: 2px solid #c5a059;
+  border-left: 2px solid #c5a059;
+  border-right: 2px solid #c5a059;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
+}
+
+/* 5.6 Envelope Top Flap (Folds Open Upwards) */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56%;
+  transform-origin: top center;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.env-flap-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #6b1424 0%, #4f0e1a 60%, #3a0812 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4);
+  transition: background 0.65s ease;
+}
+
+.env-flap-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-top: 2px solid #c5a059;
+  border-left: 1.5px solid rgba(197, 160, 89, 0.6);
+  border-right: 1.5px solid rgba(197, 160, 89, 0.6);
+}
+
+/* 5.7 Wax Seal Monogram */
+.env-seal {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .env-seal {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+.seal-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.6) 0%, transparent 70%);
+  animation: seal-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes seal-pulse {
+  0%, 100% { transform: scale(0.92); opacity: 0.45; }
+  50% { transform: scale(1.18); opacity: 0.9; }
+}
+
+.seal-stamp {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd678 0%, #c5a059 45%, #94691f 85%, #593d0c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -3px 5px rgba(0, 0, 0, 0.6);
+  border: 2px solid #54111d;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (max-width: 480px) {
+  .seal-stamp {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+.envelope-container:hover .seal-stamp {
+  transform: scale(1.08);
+}
+
+.seal-initials {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.85rem;
+  color: #4a0d18;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .seal-initials { font-size: 1.6rem; }
+}
+
+/* 5.8 Realistic 3D Envelope Bottom Shadow */
+.env-shadow {
+  position: absolute;
+  bottom: -20px;
+  left: 5%;
+  width: 90%;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, transparent 75%);
+  filter: blur(5px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 0;
+}
+
+.envelope-container:hover .env-shadow {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/* Tap Prompt Banner */
+.envelope-prompt {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e8d8b5;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: bounce-prompt 2s infinite ease-in-out;
+  transition: opacity 0.3s ease;
+}
+
+.envelope-prompt .prompt-icon {
+  color: #c5a059;
+  font-size: 0.85rem;
+}
+
+@keyframes bounce-prompt {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -5px); }
+}
+
+/* 5.9 OPENED STATE ANIMATIONS */
+.envelope-container.opening .env-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.15);
+  pointer-events: none;
+}
+
+.envelope-container.opening .envelope-prompt {
+  opacity: 0;
+}
+
+.envelope-container.opening .env-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.01s linear 0.32s;
+}
+
+.envelope-container.opening .env-flap-inner {
+  background: linear-gradient(180deg, #3d0a14 0%, #200408 100%);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.envelope-container.opening .env-letter {
+  transform: translateY(-130px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 28px rgba(197, 160, 89, 0.35);
+  transition-delay: 0.32s;
+}
+
+@media (max-width: 480px) {
+  .envelope-container.opening .env-letter {
+    transform: translateY(-105px);
+  }
+}
+
+@media (max-width: 360px) {
+  .envelope-container.opening .env-letter {
+    transform: translateY(-90px);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   6. Floating Petal Canvas & Audio Controls
+   ---------------------------------------------------------------------------- */
+#petals-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Floating Audio Control Button */
+.audio-control-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 990;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 1px solid var(--gold-champagne);
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+  .audio-control-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+  }
+}
+
+.audio-control-btn:hover {
+  transform: scale(1.08);
+  background: var(--burgundy);
+  color: var(--bg-white);
+}
+
+.audio-control-btn.playing {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ----------------------------------------------------------------------------
+   7. Navigation Bar, Glassmorphism & Mobile Drawer
+   ---------------------------------------------------------------------------- */
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  transition: all 0.35s ease;
+  padding: 1rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav-header {
+    padding: 0.85rem 1.25rem;
+    background: rgba(250, 249, 246, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-muted);
+  }
+}
+
+.nav-header.scrolled {
+  background: rgba(250, 249, 246, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-muted);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 0.75rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav-header.scrolled {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Offset for section scrolling to clear fixed navbar */
+section[id] {
+  scroll-margin-top: 75px;
+}
+
+/* Desktop Navigation Link */
+.nav-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--burgundy);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Mobile Drawer Menu Container */
+#mobile-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(250, 249, 246, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-nav-link {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--burgundy) !important;
+  background-color: rgba(122, 28, 46, 0.08);
+  font-weight: 700 !important;
+}
+
+/* ----------------------------------------------------------------------------
+   8. Hero Section & Live Countdown Component
+   ---------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5.5rem;
+  padding-bottom: 3.5rem;
+  background: var(--bg-porcelain);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+.hero-card {
+  background: var(--bg-white);
+  border: 1px solid var(--gold-muted);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .hero-card {
+    border-radius: 18px;
+  }
+}
+
+.hero-img-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.hero-img-box img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-img-box:hover img {
+  transform: scale(1.04);
+}
+
+/* Countdown Timer Box */
+.countdown-box {
+  background: var(--bg-cream-soft);
+  border: 1px solid var(--gold-muted);
+  border-radius: 16px;
+  padding: 1.1rem 0.9rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-white);
+  border: 1px solid var(--gold-muted);
+  border-radius: 12px;
+  padding: 0.6rem 0.5rem;
+  min-width: 58px;
+  flex: 1 1 0px;
+  max-width: 84px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 360px) {
+  .countdown-unit {
+    min-width: 50px;
+    padding: 0.45rem 0.35rem;
+  }
+}
+
+.countdown-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 4.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------------------
+   9. Buttons & Interactive Controls
+   ---------------------------------------------------------------------------- */
+/* Solid Burgundy Luxury Button */
+.btn-burgundy {
+  background: var(--burgundy);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.6rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 18px rgba(122, 28, 46, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.btn-burgundy:hover {
+  background: var(--burgundy-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(122, 28, 46, 0.3);
+}
+
+/* Outline Gold Luxury Button */
+.btn-outline-gold {
+  background: transparent;
+  border: 1px solid var(--gold-champagne);
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.btn-outline-gold:hover {
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+  background: rgba(122, 28, 46, 0.03);
+}
+
+/* ----------------------------------------------------------------------------
+   10. Storytelling Chapter Timeline Section
+   ---------------------------------------------------------------------------- */
+.story-timeline {
+  position: relative;
+}
+
+.story-card {
+  background: var(--bg-white);
+  border-radius: 20px;
+  border: 1px solid var(--gold-muted);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+  border-color: var(--gold-champagne);
+}
+
+.story-badge {
+  background: var(--bg-cream-soft);
+  color: var(--burgundy);
+  border: 1px solid var(--gold-muted);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 30px;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------------------
+   11. Sacred Rituals & Schedule Cards
+   ---------------------------------------------------------------------------- */
+.ritual-card {
+  background: var(--bg-white);
+  border-radius: 24px;
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .ritual-card {
+    border-radius: 18px;
+  }
+}
+
+.ritual-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 160, 89, 0.6);
+  box-shadow: 0 20px 45px rgba(122, 28, 46, 0.09), 0 2px 10px rgba(197, 160, 89, 0.15);
+}
+
+/* ----------------------------------------------------------------------------
+   12. Photo Gallery & Lightbox Viewer
+   ---------------------------------------------------------------------------- */
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--gold-muted);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  touch-action: manipulation;
+}
+
+.gallery-item img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(84, 17, 29, 0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  color: #ffffff;
+}
+
+@media (hover: none) {
+  .gallery-overlay {
+    opacity: 0.9;
+    background: linear-gradient(to top, rgba(84, 17, 29, 0.75) 0%, transparent 50%);
+    padding: 0.75rem;
+  }
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   13. Wishes Wall & Guestbook Cards
+   ---------------------------------------------------------------------------- */
+.wish-card {
+  background: var(--bg-white);
+  border: 1px solid var(--gold-muted);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  word-break: break-word;
+}
+
+.wish-card:hover {
+  border-color: var(--gold-champagne);
+  transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------------------------------
+   14. Scroll & Entry Reveal Animations
+   ---------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* ----------------------------------------------------------------------------
+   15. Custom Scrollbars & Webkit Enhancements
+   ---------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-porcelain);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-champagne);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--burgundy);
+}

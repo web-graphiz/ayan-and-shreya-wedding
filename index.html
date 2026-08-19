@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- ==========================================================================
+       Document Metadata & SEO Configuration
+       ========================================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ayan & Shreya | Royal Bengali Wedding Celebration</title>
+  <meta name="description" content="Official luxury royal wedding celebration and invitation for Ayan & Shreya at The Rajbari Bawali, Kolkata. Explore ritual timings, our love story, venue directions, and digital RSVP.">
+  <meta name="keywords" content="Ayan and Shreya, Bengali Wedding, Shubho Biye, Rajbari Bawali, Kolkata Wedding Invitation, Royal Wedding">
+  <meta name="author" content="Ayan & Shreya">
+  
+  <!-- OpenGraph Social Media Sharing Tags -->
+  <meta property="og:title" content="Ayan & Shreya | Wedding Celebration">
+  <meta property="og:description" content="Join us in celebrating the holy union of Ayan & Shreya at The Rajbari Bawali, Kolkata.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/bengali_hero.jpg">
+  
+  <!-- ==========================================================================
+       External Frameworks & Icon Libraries
+       ========================================================================== -->
+  <!-- Tailwind CSS CDN (Utility classes for responsive grid, layout & spacing) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6.4.0 (Icons for rituals, social actions, maps & calendars) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Luxury Wedding Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-[#faf9f6] text-[#1e1e1e] antialiased selection:bg-[#e8d8b5] selection:text-[#7a1c2e]">
+
+  <!-- ==========================================================================
+       Global Interactive Overlays: Falling Petals Canvas & Audio Toggle
+       ========================================================================== -->
+  <!-- Floating Canvas: Real-time Marigold & Rose Petals Particle System -->
+  <canvas id="petals-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Audio Control Button (Plays Raag Yaman Web Audio Synthesizer) -->
+  <button id="audio-toggle" class="audio-control-btn" title="Toggle Ambient Music" aria-label="Toggle background festive Indian classical music">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <!-- ==========================================================================
+       1. 3D Interactive Envelope Splash Screen & Invitation Card
+       ========================================================================== -->
+  <div id="envelope-screen">
+    <!-- Ambient Radial Lighting Backdrop -->
+    <div class="splash-glow"></div>
+    
+    <!-- Auspicious Vedic Shloka Header -->
+    <div class="splash-header text-center mb-4 sm:mb-6">
+      <div class="text-[#c5a059] text-opacity-90 text-xl sm:text-2xl mb-1 flex items-center justify-center gap-2">
+        <i class="fas fa-om text-sm sm:text-base"></i>
+        <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#e8d8b5] font-serif">|| श्री गणेशाय नमः ||</span>
+        <i class="fas fa-om text-sm sm:text-base"></i>
+      </div>
+      <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.35em] text-[#e8d8b5] uppercase">
+        Royal Wedding Invitation
+      </p>
+    </div>
+
+    <!-- 3D Interactive Envelope Component (Clickable Container) -->
+    <div class="envelope-container" id="envelope-trigger" role="button" tabindex="0" aria-label="Open Wedding Invitation">
+      
+      <!-- Envelope Geometry Wrapper -->
+      <div class="envelope-main">
+        
+        <!-- 1.1 Interior Backing & Gold Damask Pattern -->
+        <div class="env-back">
+          <div class="env-back-pattern"></div>
+        </div>
+
+        <!-- 1.2 The Gold-Trimmed Invitation Letter Card (Slides upwards on open) -->
+        <div class="env-letter" id="env-letter">
+          <div class="letter-border"></div>
+          <div class="letter-content text-center">
+            <div class="letter-om"><i class="fas fa-om"></i></div>
+            <p class="letter-tagline font-serif">Wedding Invitation</p>
+            <h2 class="letter-names font-script">Ayan & Shreya</h2>
+            <div class="letter-divider">
+              <span>✦</span>
+            </div>
+            <p class="letter-date">December 12, 2026</p>
+            <p class="letter-venue">The Royal Palace • Kolkata</p>
+            <div class="letter-action">
+              <span>Enter Celebration <i class="fas fa-arrow-right ml-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.3 Envelope Front Triangular Pocket & Border Stitching -->
+        <div class="env-pocket"></div>
+
+        <!-- 1.4 Envelope Top Flap (Rotates 180 degrees upwards in 3D) -->
+        <div class="env-flap">
+          <div class="env-flap-inner"></div>
+        </div>
+
+        <!-- 1.5 Wax Seal Monogram with Pulsing Golden Glow -->
+        <div class="env-seal">
+          <div class="seal-glow"></div>
+          <div class="seal-stamp">
+            <span class="seal-initials">A&S</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 1.6 3D Dynamic Floating Ground Shadow -->
+      <div class="env-shadow"></div>
+
+      <!-- 1.7 Bouncing Action Call-to-Action Prompt -->
+      <div class="envelope-prompt">
+        <span class="prompt-icon"><i class="fas fa-envelope-open-text"></i></span>
+        <span class="prompt-text">Tap Envelope To Open</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. Fixed Glassmorphic Navigation Bar & Mobile Drawer
+       ========================================================================== -->
+  <header class="nav-header flex items-center justify-between">
+    <!-- Brand Logo / Couple Monogram -->
+    <a href="#hero" class="flex items-center gap-2 group" aria-label="Return to top">
+      <span class="text-[#7a1c2e] text-lg sm:text-xl"><i class="fas fa-om"></i></span>
+      <span class="font-script text-2xl sm:text-3xl burgundy-text font-bold">Ayan & Shreya</span>
+    </a>
+
+    <!-- Desktop Navigation Menu Items -->
+    <nav class="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Main Navigation">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#story" class="nav-link">Our Story</a>
+      <a href="#rituals" class="nav-link">Ritual Timings</a>
+      <a href="#venue" class="nav-link">Venue</a>
+      <a href="#gallery" class="nav-link">Moments</a>
+      <a href="#wishes" class="nav-link">Wishes Wall</a>
+      <a href="#rsvp" class="btn-burgundy ml-2 py-2 px-5 text-xs">RSVP</a>
+    </nav>
+
+    <!-- Mobile Hamburger Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#7a1c2e] p-2 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- Mobile Dropdown / Drawer Navigation Menu -->
+  <div id="mobile-menu" class="hidden fixed top-[60px] sm:top-16 left-0 right-0 z-50 p-5 md:hidden" aria-label="Mobile Navigation">
+    <div class="flex flex-col gap-1.5 text-center max-w-sm mx-auto">
+      <a href="#hero" class="mobile-nav-link active">Home</a>
+      <a href="#story" class="mobile-nav-link">Our Story</a>
+      <a href="#rituals" class="mobile-nav-link">Ritual Timings</a>
+      <a href="#venue" class="mobile-nav-link">Venue</a>
+      <a href="#gallery" class="mobile-nav-link">Moments</a>
+      <a href="#wishes" class="mobile-nav-link">Wishes Wall</a>
+      <a href="#rsvp" class="btn-burgundy justify-center mt-3 py-3 w-full">RSVP Now</a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       3. Hero Cover Section with Countdown Timer & Portrait
+       ========================================================================== -->
+  <section id="hero" class="hero-section px-3.5 sm:px-6 lg:px-8">
+    <div class="max-w-6xl w-full mx-auto">
+      <div class="hero-card p-5 sm:p-10 lg:p-12 reveal-scale">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Text Details Column -->
+          <div class="lg:col-span-6 text-center lg:text-left space-y-4 sm:space-y-6 reveal-left">
+            <!-- Event Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f5f2eb] border border-[#c5a059]/30 text-[#7a1c2e] text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
+              <i class="fas fa-heart text-[10px] text-[#7a1c2e]"></i> Shubho Biye Celebration
+            </div>
+
+            <!-- Couple Names Heading -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e1e1e] tracking-tight leading-tight">
+              Ayan <span class="font-script text-4xl sm:text-6xl lg:text-7xl text-[#7a1c2e] font-normal">&</span> Shreya
+            </h1>
+
+            <p class="text-[#666666] text-sm sm:text-base font-light leading-relaxed">
+              We request the pleasure of your company as we celebrate our sacred union amidst family, traditions, and lifelong blessings.
+            </p>
+
+            <!-- Date & Venue Highlight Badge -->
+            <div class="border-y border-[#c5a059]/30 py-3.5 sm:py-4 my-4 sm:my-6 space-y-2">
+              <div class="flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3 text-[#7a1c2e] font-serif font-bold text-base sm:text-lg">
+                <i class="far fa-calendar-alt text-[#c5a059]"></i>
+                <span>Saturday, December 12, 2026</span>
+              </div>
+              <div class="flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3 text-[#666666] text-[11px] sm:text-xs uppercase tracking-wider font-medium">
+                <i class="fas fa-map-marker-alt text-[#c5a059]"></i>
+                <span>The Rajbari Bawali • Kolkata, West Bengal</span>
+              </div>
+            </div>
+
+            <!-- Live Real-Time Countdown Timer -->
+            <div class="countdown-box mt-4 sm:mt-6">
+              <p class="text-[11px] sm:text-xs uppercase font-semibold text-center text-[#666666] tracking-widest mb-2.5 sm:mb-3">
+                Counting Down To The Celebration
+              </p>
+              <div class="flex items-center justify-center gap-1.5 sm:gap-3" aria-live="polite">
+                <!-- Days Unit -->
+                <div class="countdown-unit">
+                  <span id="days" class="countdown-number">00</span>
+                  <span class="countdown-label">Days</span>
+                </div>
+                <span class="text-[#7a1c2e] font-bold text-lg sm:text-xl" aria-hidden="true">:</span>
+                <!-- Hours Unit -->
+                <div class="countdown-unit">
+                  <span id="hours" class="countdown-number">00</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <span class="text-[#7a1c2e] font-bold text-lg sm:text-xl" aria-hidden="true">:</span>
+                <!-- Minutes Unit -->
+                <div class="countdown-unit">
+                  <span id="minutes" class="countdown-number">00</span>
+                  <span class="countdown-label">Mins</span>
+                </div>
+                <span class="text-[#7a1c2e] font-bold text-lg sm:text-xl" aria-hidden="true">:</span>
+                <!-- Seconds Unit -->
+                <div class="countdown-unit">
+                  <span id="seconds" class="countdown-number">00</span>
+                  <span class="countdown-label">Secs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Primary Call-to-Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2 sm:pt-4">
+              <a href="#rituals" class="btn-burgundy w-full sm:w-auto">
+                <i class="far fa-clock"></i> View Ritual Timings
+              </a>
+              <a href="#rsvp" class="btn-outline-gold w-full sm:w-auto">
+                <i class="far fa-envelope"></i> Send RSVP
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Couple Image Showcase Column -->
+          <div class="lg:col-span-6 reveal-right mt-2 lg:mt-0">
+            <div class="hero-img-box shadow-xl border border-[#c5a059]/30">
+              <img src="assets/images/bengali_hero.jpg" alt="Ayan & Shreya in traditional Bengali wedding attire" class="w-full h-72 sm:h-96 lg:h-[500px] object-cover">
+              <!-- Overlay Monogram Tag -->
+              <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-[#c5a059]/40 shadow-md">
+                <p class="font-script text-xl sm:text-2xl text-[#7a1c2e]">#AyanWedsShreya</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. Storytelling Timeline Section ("Our Love Story")
+       ========================================================================== -->
+  <section id="story" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#f5f2eb] relative overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#c5a059] tracking-[0.25em] uppercase font-bold">Chapter By Chapter</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e1e1e]">Our Love Story</h2>
+        <div class="flex items-center justify-center gap-4 text-[#c5a059] pt-1">
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+          <i class="fas fa-heart text-xs text-[#7a1c2e]"></i>
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+        </div>
+      </div>
+
+      <!-- Story Visual Timeline Grid -->
+      <div class="story-timeline space-y-8 sm:space-y-16">
+        
+        <!-- Story Chapter 1: The First Meet -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-8 items-center">
+          <div class="md:col-span-6 order-2 md:order-1 reveal-left">
+            <div class="story-card p-5 sm:p-8 space-y-3 sm:space-y-4">
+              <span class="story-badge">Chapter I • November 2022</span>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#1e1e1e]">The First Hello</h3>
+              <p class="text-[#666666] text-xs sm:text-sm leading-relaxed font-light">
+                Introduced over tea in Kolkata on a pleasant autumn afternoon, what was planned as a brief coffee meet turned into hours of effortless laughter and shared stories.
+              </p>
+              <div class="italic text-xs text-[#7a1c2e] font-medium pt-2 border-t border-[#c5a059]/20">
+                “Some people feel like home from the very first moment.”
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-6 order-1 md:order-2 reveal-right">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-[#c5a059]/30">
+              <img src="assets/images/story_first_meet.jpg" alt="Ayan and Shreya meeting at coffee shop" class="w-full h-56 sm:h-72 lg:h-[310px] object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Chapter 2: Evening Walks -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-8 items-center">
+          <div class="md:col-span-6 order-1 reveal-left">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-[#c5a059]/30">
+              <img src="assets/images/story_first_date.jpg" alt="Ayan and Shreya walking in evening light" class="w-full h-56 sm:h-72 lg:h-[310px] object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+          </div>
+          <div class="md:col-span-6 order-2 reveal-right">
+            <div class="story-card p-5 sm:p-8 space-y-3 sm:space-y-4">
+              <span class="story-badge">Chapter II • March 2023</span>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#1e1e1e]">Sunset Strolls</h3>
+              <p class="text-[#666666] text-xs sm:text-sm leading-relaxed font-light">
+                Evening walks by the river ghats and long conversations under glowing street lanterns quickly became their favorite sanctuary.
+              </p>
+              <div class="italic text-xs text-[#7a1c2e] font-medium pt-2 border-t border-[#c5a059]/20">
+                “Finding a soulmate in your best friend.”
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Chapter 3: The Proposal -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-8 items-center">
+          <div class="md:col-span-6 order-2 md:order-1 reveal-left">
+            <div class="story-card p-5 sm:p-8 space-y-3 sm:space-y-4">
+              <span class="story-badge">Chapter III • October 2025</span>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#1e1e1e]">The Sunset Proposal</h3>
+              <p class="text-[#666666] text-xs sm:text-sm leading-relaxed font-light">
+                Against a serene evening rooftop backdrop decorated with warm lights, Ayan popped the question. With joy and tears in her eyes, Shreya said "YES!"
+              </p>
+              <div class="italic text-xs text-[#7a1c2e] font-medium pt-2 border-t border-[#c5a059]/20">
+                “Hand in hand towards a lifetime of togetherness.”
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-6 order-1 md:order-2 reveal-right">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-[#c5a059]/30">
+              <img src="assets/images/story_proposal.jpg" alt="Ayan romantic proposal to Shreya" class="w-full h-56 sm:h-72 lg:h-[310px] object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. Wedding Ritual Timings & Sacred Schedule Section (Balanced 2x2 Grid)
+       ========================================================================== -->
+  <section id="rituals" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#faf9f6] relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#c5a059] tracking-[0.25em] uppercase font-bold">Celebration Itinerary</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e1e1e]">Sacred Rituals & Schedule</h2>
+        <p class="text-[#666666] text-xs sm:text-sm font-light">Join us through every auspicious moment and sacred tradition of our wedding.</p>
+        <div class="flex items-center justify-center gap-4 text-[#c5a059] pt-1">
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+          <i class="fas fa-om text-xs text-[#7a1c2e]"></i>
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+        </div>
+      </div>
+
+      <!-- Ritual Cards Grid (Balanced 2-Column Responsive Layout) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+
+        <!-- Ritual Card 1: Gaye Holud & Adhibash -->
+        <div class="ritual-card group flex flex-col reveal-scale">
+          <!-- Card Image Header -->
+          <div class="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
+            <img src="assets/images/ritual_haldi.jpg" alt="Gaye Holud turmeric ceremony" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+            
+            <!-- Badges -->
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#c5a059]/40 text-[#7a1c2e] text-[10px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
+                <i class="fas fa-sun text-[#c5a059] text-[10px] sm:text-[11px]"></i> Day 1 • Morning
+              </span>
+            </div>
+            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7a1c2e]/90 backdrop-blur-sm text-[#e8d8b5] flex items-center justify-center text-xs shadow-md border border-[#c5a059]/40">
+                <i class="fas fa-om"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div class="space-y-3 sm:space-y-4">
+              <!-- Title & Date Highlight -->
+              <div>
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-[#1e1e1e] group-hover:text-[#7a1c2e] transition-colors leading-tight mb-2">
+                  Gaye Holud & Adhibash
+                </h3>
+                <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#c5a059]/30 text-[#7a1c2e] text-xs sm:text-sm font-semibold">
+                  <i class="far fa-calendar-alt text-[#c5a059]"></i>
+                  <span>Friday, Dec 11, 2026</span>
+                  <span class="text-[#c5a059] hidden sm:inline">•</span>
+                  <i class="far fa-clock text-[#c5a059] ml-1"></i>
+                  <span>9:30 AM – 1:00 PM</span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-light">
+                The auspicious turmeric blessing ceremony to bestow radiance, prosperity, and joys upon the bride and groom amidst traditional songs and family laughter.
+              </p>
+              
+              <!-- Event Metadata Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
+                <!-- Dress Code -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#7a1c2e]/10 flex items-center justify-center text-[#7a1c2e] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-tshirt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Dress Code</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Traditional Yellow / Ethnic</span>
+                  </div>
+                </div>
+
+                <!-- Venue Location -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#c5a059]/15 flex items-center justify-center text-[#c5a059] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Venue</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Mango Grove Lawns, Rajbari</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action Row (Google Calendar & Map Links) -->
+            <div class="pt-4 sm:pt-5 border-t border-[#c5a059]/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Gaye+Holud+-+Ayan+%26+Shreya&dates=20261211T040000Z/20261211T073000Z&details=Gaye+Holud+at+The+Rajbari+Bawali&location=The+Rajbari+Bawali,+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#7a1c2e] hover:text-white bg-[#f5f2eb] hover:bg-[#7a1c2e] px-4 py-2.5 rounded-full border border-[#c5a059]/30 transition-all duration-300 shadow-sm">
+                <i class="far fa-calendar-plus text-[#c5a059] group-hover:text-white"></i> Add to Calendar
+              </a>
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-[#666666] hover:text-[#7a1c2e] transition-colors py-1">
+                <i class="fas fa-directions text-[#c5a059]"></i> View on Map <i class="fas fa-arrow-right text-[10px] ml-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ritual Card 2: Mehendi & Sangeet Night -->
+        <div class="ritual-card group flex flex-col reveal-scale">
+          <!-- Card Image Header -->
+          <div class="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
+            <img src="assets/images/ritual_mehendi.jpg" alt="Mehendi henna and sangeet celebration" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+            
+            <!-- Badges -->
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#c5a059]/40 text-[#7a1c2e] text-[10px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
+                <i class="fas fa-moon text-[#c5a059] text-[10px] sm:text-[11px]"></i> Day 1 • Evening
+              </span>
+            </div>
+            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7a1c2e]/90 backdrop-blur-sm text-[#e8d8b5] flex items-center justify-center text-xs shadow-md border border-[#c5a059]/40">
+                <i class="fas fa-music"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div class="space-y-3 sm:space-y-4">
+              <!-- Title & Date Highlight -->
+              <div>
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-[#1e1e1e] group-hover:text-[#7a1c2e] transition-colors leading-tight mb-2">
+                  Mehendi & Sangeet Night
+                </h3>
+                <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#c5a059]/30 text-[#7a1c2e] text-xs sm:text-sm font-semibold">
+                  <i class="far fa-calendar-alt text-[#c5a059]"></i>
+                  <span>Friday, Dec 11, 2026</span>
+                  <span class="text-[#c5a059] hidden sm:inline">•</span>
+                  <i class="far fa-clock text-[#c5a059] ml-1"></i>
+                  <span>6:30 PM Onwards</span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-light">
+                An evening of intricate bridal henna artistry, spirited musical performances, choreographed family dances, and a lavish poolside feast.
+              </p>
+              
+              <!-- Event Metadata Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
+                <!-- Dress Code -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#7a1c2e]/10 flex items-center justify-center text-[#7a1c2e] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-tshirt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Dress Code</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Festive Green / Indo-Western</span>
+                  </div>
+                </div>
+
+                <!-- Venue Location -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#c5a059]/15 flex items-center justify-center text-[#c5a059] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Venue</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Royal Ballroom & Pavilion</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action Row -->
+            <div class="pt-4 sm:pt-5 border-t border-[#c5a059]/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mehendi+%26+Sangeet+-+Ayan+%26+Shreya&dates=20261211T130000Z/20261211T180000Z&details=Bengali+Mehendi+and+Sangeet+Night&location=The+Rajbari+Bawali,+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#7a1c2e] hover:text-white bg-[#f5f2eb] hover:bg-[#7a1c2e] px-4 py-2.5 rounded-full border border-[#c5a059]/30 transition-all duration-300 shadow-sm">
+                <i class="far fa-calendar-plus text-[#c5a059] group-hover:text-white"></i> Add to Calendar
+              </a>
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-[#666666] hover:text-[#7a1c2e] transition-colors py-1">
+                <i class="fas fa-directions text-[#c5a059]"></i> View on Map <i class="fas fa-arrow-right text-[10px] ml-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ritual Card 3: Saat Paak & Shubho Drishti (Main Wedding) -->
+        <div class="ritual-card group flex flex-col reveal-scale">
+          <!-- Card Image Header -->
+          <div class="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
+            <img src="assets/images/ritual_phere.jpg" alt="Saat Paak pheras and Shubho Drishti" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+            
+            <!-- Badges -->
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#c5a059]/40 text-[#7a1c2e] text-[10px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
+                <i class="fas fa-ring text-[#c5a059] text-[10px] sm:text-[11px]"></i> Day 2 • Main Wedding
+              </span>
+            </div>
+            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7a1c2e]/90 backdrop-blur-sm text-[#e8d8b5] flex items-center justify-center text-xs shadow-md border border-[#c5a059]/40">
+                <i class="fas fa-fire-alt"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div class="space-y-3 sm:space-y-4">
+              <!-- Title & Date Highlight -->
+              <div>
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-[#1e1e1e] group-hover:text-[#7a1c2e] transition-colors leading-tight mb-2">
+                  Saat Paak & Shubho Drishti
+                </h3>
+                <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#c5a059]/30 text-[#7a1c2e] text-xs sm:text-sm font-semibold">
+                  <i class="far fa-calendar-alt text-[#c5a059]"></i>
+                  <span>Saturday, Dec 12, 2026</span>
+                  <span class="text-[#c5a059] hidden sm:inline">•</span>
+                  <i class="far fa-clock text-[#c5a059] ml-1"></i>
+                  <span>6:00 PM Onwards</span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-light">
+                The sacred seven circles around the Agni Mandap, exchange of floral garlands (Mala Badal), Sindoor Daan, and the timeless solemnization of marriage.
+              </p>
+              
+              <!-- Event Metadata Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
+                <!-- Dress Code -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#7a1c2e]/10 flex items-center justify-center text-[#7a1c2e] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-tshirt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Dress Code</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Royal Red & Ivory Traditional</span>
+                  </div>
+                </div>
+
+                <!-- Venue Location -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#c5a059]/15 flex items-center justify-center text-[#c5a059] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Venue</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Courtyard Agni Mandap</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action Row -->
+            <div class="pt-4 sm:pt-5 border-t border-[#c5a059]/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shubho+Biye+Saat+Paak+-+Ayan+%26+Shreya&dates=20261212T123000Z/20261212T180000Z&details=Bengali+Wedding+Saat+Paak+and+Shubho+Drishti&location=The+Rajbari+Bawali,+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#7a1c2e] hover:text-white bg-[#f5f2eb] hover:bg-[#7a1c2e] px-4 py-2.5 rounded-full border border-[#c5a059]/30 transition-all duration-300 shadow-sm">
+                <i class="far fa-calendar-plus text-[#c5a059] group-hover:text-white"></i> Add to Calendar
+              </a>
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-[#666666] hover:text-[#7a1c2e] transition-colors py-1">
+                <i class="fas fa-directions text-[#c5a059]"></i> View on Map <i class="fas fa-arrow-right text-[10px] ml-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ritual Card 4: Bou Bhat & Grand Reception Banquet -->
+        <div class="ritual-card group flex flex-col reveal-scale">
+          <!-- Card Image Header -->
+          <div class="relative h-52 sm:h-64 lg:h-72 overflow-hidden">
+            <img src="assets/images/ritual_reception.jpg" alt="Bou Bhat grand reception gala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+            
+            <!-- Badges -->
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#c5a059]/40 text-[#7a1c2e] text-[10px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
+                <i class="fas fa-glass-cheers text-[#c5a059] text-[10px] sm:text-[11px]"></i> Day 3 • Bou Bhat Gala
+              </span>
+            </div>
+            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7a1c2e]/90 backdrop-blur-sm text-[#e8d8b5] flex items-center justify-center text-xs shadow-md border border-[#c5a059]/40">
+                <i class="fas fa-crown"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div class="space-y-3 sm:space-y-4">
+              <!-- Title & Date Highlight -->
+              <div>
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-[#1e1e1e] group-hover:text-[#7a1c2e] transition-colors leading-tight mb-2">
+                  Bou Bhat & Grand Reception
+                </h3>
+                <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#c5a059]/30 text-[#7a1c2e] text-xs sm:text-sm font-semibold">
+                  <i class="far fa-calendar-alt text-[#c5a059]"></i>
+                  <span>Sunday, Dec 13, 2026</span>
+                  <span class="text-[#c5a059] hidden sm:inline">•</span>
+                  <i class="far fa-clock text-[#c5a059] ml-1"></i>
+                  <span>7:00 PM Onwards</span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#555555] text-xs sm:text-sm leading-relaxed font-light">
+                An opulent evening banquet welcoming the bride, with classical live symphony orchestra, royal feast, champagne toasts, and heartfelt celebrations.
+              </p>
+              
+              <!-- Event Metadata Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
+                <!-- Dress Code -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#7a1c2e]/10 flex items-center justify-center text-[#7a1c2e] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-tshirt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Dress Code</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Evening Formals / Sarees</span>
+                  </div>
+                </div>
+
+                <!-- Venue Location -->
+                <div class="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-[#faf9f6] border border-[#c5a059]/25 group-hover:border-[#c5a059]/50 transition-colors">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#c5a059]/15 flex items-center justify-center text-[#c5a059] shrink-0 text-xs sm:text-sm">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold text-[#888888] tracking-wider block">Venue</span>
+                    <span class="text-xs font-semibold text-[#1e1e1e] leading-snug block">Grand Palace Lawn & Verandah</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action Row -->
+            <div class="pt-4 sm:pt-5 border-t border-[#c5a059]/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bou+Bhat+Reception+-+Ayan+%26+Shreya&dates=20261213T133000Z/20261213T183000Z&details=Bou+Bhat+Bengali+Reception+Gala&location=The+Rajbari+Bawali,+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#7a1c2e] hover:text-white bg-[#f5f2eb] hover:bg-[#7a1c2e] px-4 py-2.5 rounded-full border border-[#c5a059]/30 transition-all duration-300 shadow-sm">
+                <i class="far fa-calendar-plus text-[#c5a059] group-hover:text-white"></i> Add to Calendar
+              </a>
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-[#666666] hover:text-[#7a1c2e] transition-colors py-1">
+                <i class="fas fa-directions text-[#c5a059]"></i> View on Map <i class="fas fa-arrow-right text-[10px] ml-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Heritage Venue & Travel Guide Section
+       ========================================================================== -->
+  <section id="venue" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#f5f2eb] relative overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#c5a059] tracking-[0.25em] uppercase font-bold">Royal Destination</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e1e1e]">The Wedding Venue</h2>
+        <p class="text-[#666666] text-xs sm:text-sm font-light">The Rajbari Bawali • A 300-Year-Old Historic Heritage Palace</p>
+        <div class="flex items-center justify-center gap-4 text-[#c5a059] pt-1">
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+          <i class="fas fa-map-marker-alt text-xs text-[#7a1c2e]"></i>
+          <span class="w-10 sm:w-12 h-[1px] bg-[#c5a059]"></span>
+        </div>
+      </div>
+
+      <!-- Main Venue Showcase Feature Card -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#c5a059]/30 shadow-xl overflow-hidden mb-8 sm:mb-12 reveal-scale">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          
+          <!-- Venue Photo Column -->
+          <div class="lg:col-span-7 relative h-64 sm:h-80 lg:h-auto overflow-hidden">
+            <img src="assets/images/venue_rajbari.jpg" alt="The Rajbari Bawali Grand Palace illuminated facade" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000">
+            <!-- Heritage Landmark Tag -->
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-black/60 backdrop-blur-md px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#c5a059]/40 text-[#e8d8b5] text-[11px] sm:text-xs font-semibold tracking-wider">
+              <i class="fas fa-landmark text-[#c5a059] mr-1"></i> Heritage Landmark
+            </div>
+            <!-- Address & Map Link Bar -->
+            <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-stone-900/85 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-[#c5a059]/30 text-white text-[11px] sm:text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+              <span><i class="fas fa-compass text-[#c5a059] mr-1.5"></i> Bawali, 24 Parganas South, West Bengal</span>
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="text-[#e8d8b5] font-bold hover:underline flex items-center gap-1 shrink-0">
+                Open Map <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Venue Architecture & Description Column -->
+          <div class="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div class="space-y-3 sm:space-y-4">
+              <span class="inline-block px-3 py-1 bg-[#f5f2eb] text-[#7a1c2e] font-serif text-[11px] sm:text-xs font-bold rounded-full border border-[#c5a059]/30 uppercase tracking-wider">
+                Exquisite Zamindari Elegance
+              </span>
+              <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-[#1e1e1e] leading-snug">
+                Step into a World of Aristocratic Grandeur
+              </h3>
+              <p class="text-[#666666] text-xs sm:text-sm leading-relaxed font-light">
+                Nestled amidst lush greenery just outside Kolkata, <strong>The Rajbari Bawali</strong> is a meticulously restored 18th-century royal palace. With Romanesque arches, sprawling courtyards, and illuminated pavilions, it provides the quintessential fairy-tale setting for our traditional Bengali wedding rituals.
+              </p>
+            </div>
+
+            <!-- Palace Amenities & Feature Highlights -->
+            <div class="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs border-y border-[#c5a059]/20 py-3.5 sm:py-4">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-archway text-[#7a1c2e] text-sm sm:text-base"></i>
+                <span class="text-[#1e1e1e] font-medium text-[11px] sm:text-xs">Grand Courtyard</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-tree text-[#7a1c2e] text-sm sm:text-base"></i>
+                <span class="text-[#1e1e1e] font-medium text-[11px] sm:text-xs">Mango Grove Lawns</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-bed text-[#7a1c2e] text-sm sm:text-base"></i>
+                <span class="text-[#1e1e1e] font-medium text-[11px] sm:text-xs">Royal Guest Suites</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-utensils text-[#7a1c2e] text-sm sm:text-base"></i>
+                <span class="text-[#1e1e1e] font-medium text-[11px] sm:text-xs">Zamindari Dining</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 pt-1">
+              <a href="https://maps.google.com/?q=The+Rajbari+Bawali+Kolkata" target="_blank" rel="noopener noreferrer" class="btn-burgundy text-xs w-full sm:flex-1 justify-center py-3">
+                <i class="fas fa-location-arrow"></i> Get Directions
+              </a>
+              <a href="#rsvp" class="btn-outline-gold text-xs w-full sm:flex-1 justify-center py-3">
+                <i class="far fa-envelope"></i> Request Stay
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Venue Travel & Map Guide Grid (3-Column Layout) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 reveal">
+        
+        <!-- Travel Card 1: Airport -->
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-[#c5a059]/30 shadow-sm space-y-2 sm:space-y-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#f5f2eb] text-[#7a1c2e] flex items-center justify-center text-base sm:text-lg">
+            <i class="fas fa-plane-arrival"></i>
+          </div>
+          <h4 class="text-sm sm:text-base font-bold text-[#1e1e1e]">From Kolkata Airport (CCU)</h4>
+          <p class="text-xs text-[#666666] leading-relaxed">
+            Approx. 48 km (90 mins drive via EM Bypass & Diamond Harbour Rd). Dedicated wedding guest shuttle will be available.
+          </p>
+        </div>
+
+        <!-- Travel Card 2: Railway Stations -->
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-[#c5a059]/30 shadow-sm space-y-2 sm:space-y-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#f5f2eb] text-[#7a1c2e] flex items-center justify-center text-base sm:text-lg">
+            <i class="fas fa-train"></i>
+          </div>
+          <h4 class="text-sm sm:text-base font-bold text-[#1e1e1e]">From Howrah / Sealdah</h4>
+          <p class="text-xs text-[#666666] leading-relaxed">
+            Approx. 36 km (70 mins drive). App cabs (Uber/Ola) & pre-arranged private taxis are easily accessible.
+          </p>
+        </div>
+
+        <!-- Travel Card 3: Parking & Concierge -->
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-[#c5a059]/30 shadow-sm space-y-2 sm:space-y-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#f5f2eb] text-[#7a1c2e] flex items-center justify-center text-base sm:text-lg">
+            <i class="fas fa-car"></i>
+          </div>
+          <h4 class="text-sm sm:text-base font-bold text-[#1e1e1e]">Valet Parking & Assistance</h4>
+          <p class="text-xs text-[#666666] leading-relaxed">
+            Ample on-site secure valet parking available for personal vehicles throughout all wedding ceremonies.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. Captured Moments & Photo Gallery Section
+       ========================================================================== -->
+  <section id="gallery" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#faf9f6]">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#c5a059] tracking-[0.25em] uppercase font-bold">Captured Moments</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e1e1e]">Wedding Gallery</h2>
+        <p class="text-[#666666] text-xs sm:text-sm font-light">Glimpses of love framed in timeless portraits.</p>
+      </div>
+
+      <!-- Balanced 2-Col Mobile / 4-Col Desktop Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+        <!-- Photo Item 1 -->
+        <div class="gallery-item aspect-square reveal-scale" role="button" tabindex="0" aria-label="Open photo: Shubho Biye Portrait">
+          <img src="assets/images/bengali_hero.jpg" alt="Ayan and Shreya traditional portrait">
+          <div class="gallery-overlay">
+            <span class="font-script text-base sm:text-2xl">Shubho Biye</span>
+          </div>
+        </div>
+
+        <!-- Photo Item 2 -->
+        <div class="gallery-item aspect-square reveal-scale" role="button" tabindex="0" aria-label="Open photo: Rajbari Courtyard">
+          <img src="assets/images/gallery_1.jpg" alt="Prewedding couple shoot in palace courtyard">
+          <div class="gallery-overlay">
+            <span class="font-script text-base sm:text-2xl">Rajbari Courtyard</span>
+          </div>
+        </div>
+
+        <!-- Photo Item 3 -->
+        <div class="gallery-item aspect-square reveal-scale" role="button" tabindex="0" aria-label="Open photo: Floral Whispers">
+          <img src="assets/images/gallery_2.jpg" alt="Couple laughing surrounded by floral decor">
+          <div class="gallery-overlay">
+            <span class="font-script text-base sm:text-2xl">Floral Whispers</span>
+          </div>
+        </div>
+
+        <!-- Photo Item 4 -->
+        <div class="gallery-item aspect-square reveal-scale" role="button" tabindex="0" aria-label="Open photo: Twilight Proposal">
+          <img src="assets/images/story_proposal.jpg" alt="Twilight proposal moment">
+          <div class="gallery-overlay">
+            <span class="font-script text-base sm:text-2xl">Twilight Proposal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Lightbox Modal Dialog -->
+  <div id="gallery-lightbox" class="hidden fixed inset-0 z-[999] bg-black/90 backdrop-blur-md items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Photo full preview">
+    <button id="close-lightbox" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-2xl sm:text-3xl hover:text-[#c5a059] transition-colors p-2" aria-label="Close photo preview">
+      <i class="fas fa-times"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="Full Preview" class="max-w-full max-h-[80vh] sm:max-h-[85vh] rounded-xl shadow-2xl border border-[#c5a059]">
+  </div>
+
+  <!-- ==========================================================================
+       8. Digital Wishes Wall & Guestbook Section
+       ========================================================================== -->
+  <section id="wishes" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#faf9f6]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#c5a059] tracking-[0.25em] uppercase font-bold">Blessings & Well Wishes</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e1e1e]">Digital Guestbook</h2>
+        <p class="text-[#666666] text-xs sm:text-sm font-light">Leave your warm love and blessings for Ayan & Shreya.</p>
+      </div>
+
+      <!-- Add New Blessing Form Card -->
+      <div class="bg-white border border-[#c5a059]/30 rounded-2xl p-5 sm:p-8 shadow-sm max-w-2xl mx-auto mb-8 sm:mb-12 reveal-scale">
+        <form id="wish-form" class="space-y-4">
+          <div>
+            <label for="wish-name" class="block text-xs font-bold uppercase text-[#666666] mb-1.5">Your Name</label>
+            <input type="text" id="wish-name" required placeholder="e.g. Debashish & Lopamudra Mukherjee" class="w-full px-4 py-3 rounded-xl border border-[#c5a059]/30 focus:outline-none focus:border-[#7a1c2e] text-sm">
+          </div>
+          <div>
+            <label for="wish-text" class="block text-xs font-bold uppercase text-[#666666] mb-1.5">Your Blessing / Wish</label>
+            <textarea id="wish-text" required rows="3" placeholder="Write your heartfelt message here..." class="w-full px-4 py-3 rounded-xl border border-[#c5a059]/30 focus:outline-none focus:border-[#7a1c2e] text-sm"></textarea>
+          </div>
+          <button type="submit" class="btn-burgundy w-full justify-center py-3.5 text-xs sm:text-sm">
+            <i class="fas fa-paper-plane"></i> Send Blessing To Couple
+          </button>
+        </form>
+      </div>
+
+      <!-- Dynamic Wishes Wall Container (Rendered dynamically via app.js) -->
+      <div id="wishes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. Interactive Guest RSVP Section & Custom Modal
+       ========================================================================== -->
+  <section id="rsvp" class="py-14 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#54111d] text-white relative">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2.5 sm:space-y-3 reveal">
+        <span class="font-cinzel text-[11px] sm:text-xs text-[#e8d8b5] tracking-[0.25em] uppercase font-bold">Be Our Guest</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold gold-text">Confirm Your Presence</h2>
+        <p class="text-[#e8d8b5] text-xs sm:text-sm font-light">Please respond by November 15, 2026 to ensure seamless arrangements.</p>
+      </div>
+
+      <!-- RSVP Glassmorphism Form Card -->
+      <div class="bg-stone-900/85 backdrop-blur-lg border border-[#c5a059]/40 rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-2xl reveal-scale">
+        <form id="rsvp-form" class="space-y-5 sm:space-y-6">
+          <!-- Row 1: Name & Count -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div>
+              <label for="guest-name" class="block text-xs font-semibold uppercase text-[#e8d8b5] mb-1.5 sm:mb-2">Full Name *</label>
+              <input type="text" id="guest-name" required placeholder="Enter your full name" class="w-full px-4 py-3 rounded-xl bg-stone-800/80 border border-[#c5a059]/30 text-white placeholder-stone-400 focus:outline-none focus:border-[#c5a059] text-sm">
+            </div>
+            <div>
+              <label for="guest-count" class="block text-xs font-semibold uppercase text-[#e8d8b5] mb-1.5 sm:mb-2">Number of Guests *</label>
+              <select id="guest-count" class="w-full px-4 py-3 rounded-xl bg-stone-800/80 border border-[#c5a059]/30 text-white focus:outline-none focus:border-[#c5a059] text-sm">
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4+">4+ Family Members</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 2: Food & Stay Preferences -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div>
+              <label for="guest-food" class="block text-xs font-semibold uppercase text-[#e8d8b5] mb-1.5 sm:mb-2">Food & Feast Preference</label>
+              <select id="guest-food" class="w-full px-4 py-3 rounded-xl bg-stone-800/80 border border-[#c5a059]/30 text-white focus:outline-none focus:border-[#c5a059] text-sm">
+                <option value="nonveg">Traditional Bengali Feast (Fish & Meat)</option>
+                <option value="pure-veg">Pure Vegetarian</option>
+                <option value="jain">Jain Special (No Onion/Garlic)</option>
+              </select>
+            </div>
+            <div>
+              <label for="guest-stay" class="block text-xs font-semibold uppercase text-[#e8d8b5] mb-1.5 sm:mb-2">Need Hotel Accommodation?</label>
+              <select id="guest-stay" class="w-full px-4 py-3 rounded-xl bg-stone-800/80 border border-[#c5a059]/30 text-white focus:outline-none focus:border-[#c5a059] text-sm">
+                <option value="yes">Yes, arrange stay at Rajbari Bawali</option>
+                <option value="no">No, making own arrangements</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3: Events Attendance Checkboxes -->
+          <div>
+            <label class="block text-xs font-semibold uppercase text-[#e8d8b5] mb-2 sm:mb-3">Which events will you attend?</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-sm">
+              <label class="flex items-center gap-2.5 bg-stone-800/60 p-3 rounded-xl border border-[#c5a059]/20 cursor-pointer hover:border-[#c5a059]">
+                <input type="checkbox" name="event" value="Gaye Holud" checked class="accent-[#c5a059] w-4 h-4">
+                <span>Gaye Holud</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-stone-800/60 p-3 rounded-xl border border-[#c5a059]/20 cursor-pointer hover:border-[#c5a059]">
+                <input type="checkbox" name="event" value="Saat Paak" checked class="accent-[#c5a059] w-4 h-4">
+                <span>Saat Paak & Biye</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-stone-800/60 p-3 rounded-xl border border-[#c5a059]/20 cursor-pointer hover:border-[#c5a059]">
+                <input type="checkbox" name="event" value="Bou Bhat" checked class="accent-[#c5a059] w-4 h-4">
+                <span>Bou Bhat Reception</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-burgundy w-full justify-center py-3.5 sm:py-4 text-xs sm:text-sm mt-2 sm:mt-4 bg-[#7a1c2e] hover:bg-[#9e2a40]">
+            <i class="fas fa-check-circle"></i> Confirm RSVP Submission
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RSVP Confirmation Success Modal Dialog -->
+  <div id="rsvp-success-modal" class="hidden fixed inset-0 z-[999] bg-black/80 backdrop-blur-md items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-guest-name">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-4 border border-[#c5a059] shadow-2xl mx-auto">
+      <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#f5f2eb] text-[#7a1c2e] rounded-full flex items-center justify-center mx-auto text-2xl sm:text-3xl">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-[#1e1e1e]">RSVP Confirmed!</h3>
+      <p class="text-[#666666] text-xs sm:text-sm">
+        Thank you <strong id="modal-guest-name" class="text-[#7a1c2e]"></strong>! We look forward to celebrating our special day with you in Kolkata.
+      </p>
+      <button id="close-modal-btn" class="btn-burgundy w-full justify-center py-2.5 sm:py-3 text-xs sm:text-sm">
+        Close Window
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       10. Footer Section
+       ========================================================================== -->
+  <footer class="bg-[#150205] text-[#e8d8b5] py-10 sm:py-12 px-4 text-center border-t border-[#c5a059]/30">
+    <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4">
+      <h3 class="font-script text-3xl sm:text-4xl gold-text">Ayan & Shreya</h3>
+      <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.2em] text-[#c5a059] uppercase font-semibold">
+        December 12, 2026 • Kolkata, West Bengal
+      </p>
+      <p class="text-xs text-stone-500 pt-2 sm:pt-4">
+        #AyanWedsShreya • With Love & Blessings
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Client-side JavaScript Application Logic
+       ========================================================================== -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
